@@ -31,6 +31,8 @@ Based on KNN, we can recommend movies for each of them!
 
 _!!!Explore this [online demo](http://nuolei-movie.streamlit.app) in one click!!!_
 
+![Example](readme/demo screenshot.png "Example")
+
 ## 4. Conclusion
 
 Here we employed KNN model to complete the rating matrix.
