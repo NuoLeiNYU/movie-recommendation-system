@@ -27,7 +27,20 @@ In this way, we successfully estimate the rating of movies by the average rating
 The following is a easy demo of 1097 people (one is missing) and their ratings for 400 movies (movies haven't seen are rated as NaN).
 Based on KNN, we can recommend movies for each of them!
 
-## 3. Recommendation
+## 3. Movie recommendation demo
 
-_!!!Explore this project on our [online demo](http://nuolei-movie.streamlit.app) in one click!!!_
+_!!!Explore this [online demo](http://nuolei-movie.streamlit.app) in one click!!!_
 
+## 4. Conclusion
+
+Here we employed KNN model to complete the rating matrix.
+Therefore we can recommend movies for users by sorted rating.
+This method ensures that the recommendations are movies highly rated by like-mined people.
+
+But since it is a easy demo for KNN, here we do not consider other factors such as preferred **genres** and **staring actors**.
+So it is possible that we make further improvement and make better recommendations considering these factors.
+
+## Thank you for exploring!
+Source code is published [here](https://github.com/NuoLeiNYU/movie-recommendation-system).
+
+More on my [github](https://github.com/NuoLeiNYU).

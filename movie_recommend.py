@@ -119,7 +119,7 @@ show_movies(recommend_movies, 'image/')
 
 
 st.write('''
-    ## Conclusion
+    ## 4. Conclusion
     
     Here we employed KNN model to complete the rating matrix.
     Therefore we can recommend movies for users by sorted rating.
