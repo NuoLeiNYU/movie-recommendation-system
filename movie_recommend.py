@@ -129,5 +129,7 @@ st.write('''
     So it is possible that we make further improvement and make better recommendations considering these factors.
 
     ## Thank you for exploring!
+    Source code is published ([here](https://github.com/NuoLeiNYU/movie-recommendation-system)))
+    
     More on my [github](https://github.com/NuoLeiNYU).
 ''')
