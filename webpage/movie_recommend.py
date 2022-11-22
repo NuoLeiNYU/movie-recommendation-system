@@ -6,10 +6,6 @@ from PIL import Image
 import os
 
 
-print(os.curdir)
-print(os.listdir(os.curdir))
-
-
 @st.cache
 def load_data(file):
     data = pd.read_csv(file)
