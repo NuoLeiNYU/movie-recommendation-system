@@ -48,7 +48,7 @@ def show_movies(movie_lst, save_dir):
                 st.write(movie)
 
 ## Data preperation
-df_movie = load_data('../data/movieReplicationSet.csv')
+df_movie = load_data('.../data/movieReplicationSet.csv')
 df_movie_filled = KNN_fill(df_movie)
 df_favorite_movies = favorite(df_movie)
 df_recommend_movies = recommend(df_movie_filled)
@@ -107,9 +107,9 @@ col1, col2 = st.columns(2)
 
 
 st.write("#### Favorite movies:")
-show_movies(favorite_movies, '../image/')
+show_movies(favorite_movies, '.../image/')
 st.write("#### Recommendations:")
-show_movies(recommend_movies, '../image/')
+show_movies(recommend_movies, '.../image/')
 
 
 st.write('''
