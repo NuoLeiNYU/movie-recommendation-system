@@ -5,7 +5,7 @@ Project highlights: **KNN**, **Recommendation System**, **Data Visualization**
 _!!!Explore this project on our [online demo](http://nuolei-movie.streamlit.app) in one click !!!_
 
 
-## 0. File tree
+## File tree
 
 ```bash
 ├─ data 
