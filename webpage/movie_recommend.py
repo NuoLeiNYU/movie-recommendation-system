@@ -6,8 +6,9 @@ from PIL import Image
 import os
 
 
-print(os.curdir())
+print(os.curdir)
 print(os.listdir(os.curdir))
+
 
 @st.cache
 def load_data(file):
@@ -51,13 +52,14 @@ def show_movies(movie_lst, save_dir):
                 st.image(image)
                 st.write(movie)
 
-## Data preperation
+
+# Data preperation
 df_movie = load_data('.../data/movieReplicationSet.csv')
 df_movie_filled = KNN_fill(df_movie)
 df_favorite_movies = favorite(df_movie)
 df_recommend_movies = recommend(df_movie_filled)
 
-## Web page layout
+# Web page layout
 
 st.write('''
     # KNN Movie Recommendation
@@ -92,12 +94,12 @@ st.write('''
     ## 3. Movie recommendation demo 
 ''')
 
-## option to display raw data
+# option to display raw data
 if st.checkbox('Show raw rating data (with 1096 rows and 400 columns)'):
     st.subheader('Raw data')
     st.write(df_movie)
 
-## choose user number
+# choose user number
 user_no = st.selectbox(
     'Recommend movies to user No. (0 to 1095)',
     df_movie.index)
@@ -107,7 +109,6 @@ recommend_movies = get_movie_list(df_recommend_movies, user_no)
 
 st.write("### User {}'s result is as follow:".format(user_no))
 col1, col2 = st.columns(2)
-
 
 
 st.write("#### Favorite movies:")
