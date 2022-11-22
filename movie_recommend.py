@@ -53,14 +53,7 @@ def show_movies(movie_lst, save_dir):
                 st.write(movie)
 
 
-# Data preperation
-df_movie = load_data('data/movieReplicationSet.csv')
-df_movie_filled = KNN_fill(df_movie)
-df_favorite_movies = favorite(df_movie)
-df_recommend_movies = recommend(df_movie_filled)
-
 # Web page layout
-
 st.write('''
     # KNN Movie Recommendation
 
@@ -94,6 +87,13 @@ st.write('''
     ## 3. Movie recommendation demo 
 ''')
 
+
+# Data preperation
+df_movie = load_data('data/movieReplicationSet.csv')
+df_movie_filled = KNN_fill(df_movie)
+df_favorite_movies = favorite(df_movie)
+df_recommend_movies = recommend(df_movie_filled)
+
 # option to display raw data
 if st.checkbox('Show raw rating data (with 1096 rows and 400 columns)'):
     st.subheader('Raw data')
@@ -103,6 +103,7 @@ if st.checkbox('Show raw rating data (with 1096 rows and 400 columns)'):
 user_no = st.selectbox(
     'Recommend movies to user No. (0 to 1095)',
     df_movie.index)
+
 
 favorite_movies = get_movie_list(df_favorite_movies, user_no)
 recommend_movies = get_movie_list(df_recommend_movies, user_no)
