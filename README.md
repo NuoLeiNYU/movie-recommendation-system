@@ -4,7 +4,33 @@ Project highlights: **KNN**, **Recommendation System**, **Data Visualization**
 
 _!!!Explore this project on our [online demo](http://nuolei-movie.streamlit.app) in one click !!!_
 
-## 1.Introduction
+
+## 0. File tree
+
+```bash
+├─ data 
+│  └─ movieReplicationSet.csv # 1097 people's rating of 400 movies.
+├─ image # 400 movie posters for result visualization.
+│  ├─ 10 Things I Hate About You (1999).png
+│  ├─ 10000 BC (2008).png
+│  ├─ 12 Monkeys (1995).png
+   ...
+│  ├─ Wing Commander (1999).png
+│  ├─ X-Men (2000).png
+│  ├─ X-Men 2 (2003).png
+│  ├─ You're Next (2011).png
+│  └─ Zoolander (2001).png
+├─ readme
+│  └─ demo_screenshot.png
+├─ tools # web crawler for movie posters.
+│  └─ get_movie_cover.py
+├─ README.md
+├─ movie_recommend.py # main py file for KNN recommendation and webpage rendering.
+└─ requirements.txt
+
+```
+
+## 1. Introduction
 
 Movie recommendation is an exciting topic closely related to our daily lives.
 It saves our precious time and energy to choose from millions of movies.
@@ -31,7 +57,7 @@ Based on KNN, we can recommend movies for each of them!
 
 _!!!Explore this [online demo](http://nuolei-movie.streamlit.app) in one click!!!_
 
-![Example](readme/demo screenshot.png "Example")
+![Example](readme/demo_screenshot.png)
 
 ## 4. Conclusion
 
