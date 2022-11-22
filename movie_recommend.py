@@ -54,7 +54,7 @@ def show_movies(movie_lst, save_dir):
 
 
 # Data preperation
-df_movie = load_data('.../data/movieReplicationSet.csv')
+df_movie = load_data('../data/movieReplicationSet.csv')
 df_movie_filled = KNN_fill(df_movie)
 df_favorite_movies = favorite(df_movie)
 df_recommend_movies = recommend(df_movie_filled)
