@@ -112,9 +112,9 @@ col1, col2 = st.columns(2)
 
 
 st.write("#### Favorite movies:")
-show_movies(favorite_movies, '.../image/')
+show_movies(favorite_movies, 'image/')
 st.write("#### Recommendations:")
-show_movies(recommend_movies, '.../image/')
+show_movies(recommend_movies, 'image/')
 
 
 st.write('''
