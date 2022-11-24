@@ -31,7 +31,8 @@ class MovieRecommender:
 
     @st.cache
     def _knn_fill(self):
-        df_complete = KNNImputer(n_neighbors=self.n_neighbors).fit_transform(self.df_raw)
+        df_complete = KNNImputer(
+            n_neighbors=self.n_neighbors).fit_transform(self.df_raw)
         df_complete = pd.DataFrame(df_complete, columns=self.df_raw.columns)
         return df_complete
 
@@ -46,7 +47,8 @@ class MovieRecommender:
 
     def load_data(self, file_path):
         df_raw = pd.read_csv(file_path)
-        df_raw.columns = df_raw.columns.str.replace(":", "").str.replace("/", "")
+        df_raw.columns = df_raw.columns.str.replace(
+            ":", "").str.replace("/", "")
         df_raw = df_raw.iloc[:, :400].dropna(how='all').reset_index(drop=True)
         self.df_raw = df_raw
         self.df_filled = self._knn_fill()
@@ -70,9 +72,9 @@ class MovieRecommender:
             self.df_recommend_overall = pd.DataFrame(
                 df_filled_masked.values.argsort(axis=1)[:, -self.rec_num:]).applymap(
                 lambda idx: df_filled_masked.columns[idx])
-        recommended_movies = self._get_movie_list(self.df_recommend_overall, user_no)
+        recommended_movies = self._get_movie_list(
+            self.df_recommend_overall, user_no)
         return recommended_movies
-
 
     def recommend_by_genres(self, user_no=None, movie_name=None, movie_no=None, k=3):
         if movie_name:
@@ -83,12 +85,14 @@ class MovieRecommender:
         if len(self.df_recommend_genres) == 0:
             for label in range(k):
                 df_filled_masked = self._mask_raw_pos(self.df_filled)
-                df_within_cluster = df_filled_masked.loc[:, label == self.genres_label]
+                df_within_cluster = df_filled_masked.loc[:,
+                                                         label == self.genres_label]
                 df_within_cluster = pd.DataFrame(df_within_cluster.values.argsort(axis=1)[:, -self.rec_num:]).applymap(
                     lambda idx: df_within_cluster.columns[idx])
                 self.df_recommend_genres.append(df_within_cluster)
         label = self.genres_label[movie_no]
-        recommend_movies = self._get_movie_list(self.df_recommend_genres[label], user_no)
+        recommend_movies = self._get_movie_list(
+            self.df_recommend_genres[label], user_no)
         return recommend_movies, label
 
 
@@ -103,7 +107,7 @@ def show_movies(movie_lst, save_dir):
                 st.write(movie)
 
 
-# Web page layout
+################# Web page layout below ######################
 st.write('''
     # Movie Recommender
 
@@ -199,7 +203,7 @@ st.write('''
 
 
 st.write("### 🔍 Cluster visualiztion")
-if st.checkbox('Show Clustering '):
+if st.checkbox('### Show Clustering '):
     st.write("#### Determine parameter K with Silhouette score")
     with open('readme/silhouette_score.png', 'rb') as f:
         image = Image.open(f)
@@ -227,17 +231,18 @@ st.write('''
     
 ''')
 
-group_name = ['Adventure/Action', 'Drama','Horror/Thriller']
+group_name = ['Adventure/Action', 'Drama', 'Horror/Thriller']
 st.write("### 👇 Cluster result")
 if st.checkbox('Show top 10 movies in each cluster'):
     movieRecommender.recommend_by_genres(user_no=0, movie_no=0)
 
     for idx in range(3):
-        st.write('#### Top 10 movies in Group {}: ({})'.format(idx+1, group_name[idx]))
-        series_top10 = movieRecommender.df_filled.loc[:, idx == movieRecommender.genres_label].T.mean(axis=1).nlargest(10)
+        st.write('#### Top 10 movies in Group {}: ({})'.format(
+            idx+1, group_name[idx]))
+        series_top10 = movieRecommender.df_filled.loc[:, idx == movieRecommender.genres_label].T.mean(
+            axis=1).nlargest(10)
         series_top10.name = 'ave_rating'
         st.table(series_top10)
-
 
 
 ####################### New part ######################
@@ -252,10 +257,12 @@ user_no = st.selectbox(
 watched_movie_list = movieRecommender.watched_movie_list(user_no)
 
 movie_name = st.selectbox(
-    'Choose one from the {} movies that the user has watched:'.format(len(watched_movie_list)),
+    'Choose one from the {} movies that the user has watched:'.format(
+        len(watched_movie_list)),
     watched_movie_list)
 
-recommend_movies, label = movieRecommender.recommend_by_genres(user_no = user_no, movie_name=movie_name)
+recommend_movies, label = movieRecommender.recommend_by_genres(
+    user_no=user_no, movie_name=movie_name)
 
 dt = {0: 'Adventure/Action/Comedy', 1: 'Drama and more', 2: 'Horror/Thriller'}
 
