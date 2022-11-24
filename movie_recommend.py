@@ -190,7 +190,7 @@ st.write('''
 
     ## 5. How does K-means work here
     
-    ### _A item-item approach_
+    ### _An item-item approach_
     
     The idea of K-means is quite similar to KNN with a little bit difference. 
     In the KNN part we want the average rating from K like-minded friends.
