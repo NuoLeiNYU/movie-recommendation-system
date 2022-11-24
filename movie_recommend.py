@@ -203,22 +203,22 @@ st.write('''
 
 
 st.write("### 🔍 Cluster visualiztion")
-if st.checkbox('### Show Clustering '):
-    st.write("#### Determine parameter K with Silhouette score")
-    with open('readme/silhouette_score.png', 'rb') as f:
-        image = Image.open(f)
-        st.image(image)
-    with open('readme/inertia.png', 'rb') as f:
-        image = Image.open(f)
-        st.image(image)
+# if st.checkbox('### Show Clustering '):
+st.write("#### Determine parameter K with Silhouette score")
+with open('readme/silhouette_score.png', 'rb') as f:
+    image = Image.open(f)
+    st.image(image)
+with open('readme/inertia.png', 'rb') as f:
+    image = Image.open(f)
+    st.image(image)
 
-    st.write("#### Clustering visualization in lower dimensions")
-    with open('readme/kmeans_3d.png', 'rb') as f:
-        image = Image.open(f)
-        st.image(image)
-    with open('readme/kmeans_2d.png', 'rb') as f:
-        image = Image.open(f)
-        st.image(image)
+st.write("#### Clustering visualization in lower dimensions")
+with open('readme/kmeans_3d.png', 'rb') as f:
+    image = Image.open(f)
+    st.image(image)
+with open('readme/kmeans_2d.png', 'rb') as f:
+    image = Image.open(f)
+    st.image(image)
 
 
 st.write('''
