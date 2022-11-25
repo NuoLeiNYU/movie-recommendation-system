@@ -80,7 +80,7 @@ We further take mean average and take a look at the top 10 movies in each group.
 </div>
 </center>
 
-## 7. To do even better?
+## 6. To do even better?
 
 ### More features!
 We can take into account many other factors such as **staring actors**, **director**, **language**, **area**, **length**, etc. 
