@@ -4,6 +4,7 @@ Project highlights: **KNN**, **K-means**, **PCA**, **Data visualization**, **Rec
     
 
 _Explore this project on our [online demo](http://nuolei-movie.streamlit.app) in one click_
+
 _Step by step analysis in [jupyter-notebook](https://github.com/NuoLeiNYU/movie-recommendation-system/blob/master/movie_recommender_analysis.ipynb)_
 
 ## 1.Introduction
