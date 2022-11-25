@@ -93,8 +93,10 @@ We adopt KNN and K-means model because of their **simplicity** and good **interp
 But in industrial applications we may have much more to worry about, 
 like in model performance and speed in real-time recommendation and so on.
 So it is a discretionary call and we may employ more SOTA models in that case.
-    
 
+### Reference
+
+[User Clustering for anime recommendation](https://www.kaggle.com/code/tanetboss/user-clustering-for-anime-recommendation/notebook) by [_Lastnight_](https://www.kaggle.com/tanetboss).
 ## File structure
 
 ```bash
