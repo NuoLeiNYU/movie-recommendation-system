@@ -72,3 +72,5 @@ So it is possible that we make further improvement and make better recommendatio
 Source code is published [here](https://github.com/NuoLeiNYU/movie-recommendation-system).
 
 More on my [github](https://github.com/NuoLeiNYU).
+
+<p align="center"><iframe src="https://nuolei-movie.streamlit.app/?embedded=true" style="border:none;height:1000px;width:800px;" title="nuolei"></iframe></p>
