@@ -107,7 +107,7 @@ def show_movies(movie_lst, save_dir):
                 st.write(movie)
 
 
-################# Web page layout below ######################
+################# Web page layout below by Streamlit ######################
 st.write('''
     # Movie Recommender
 
