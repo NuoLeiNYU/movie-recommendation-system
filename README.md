@@ -33,14 +33,14 @@ Based on KNN, we can recommend movies for each of them!
 
 ## 3. Recommendation based on KNN
 
-<center>
-<div id="images">
+
+<div id="images" align="center">
     <a href="https://nuolei-movie.streamlit.app/">
     <img class="demo" border="0" alt="demo_screenshot" src="readme/demo_screenshot.png"  height="400" width="400"/></a>
     <!-- <a href="https://nuolei-movie.streamlit.app/" target="_blank">
     <img class="demo2" border="0" alt="demo_screenshot2" src="readme/demo_screenshot2.png"  height="300" width="300"/></a> -->
 </div>
-</center>
+
 
 ## 4. Can we do more?
 ### What we have done
@@ -70,7 +70,7 @@ We further take mean average and take a look at the top 10 movies in each group.
 
 
 <center>
-<div id="images">
+<div id="images" align="center">
     <!-- <a href="https://nuolei-movie.streamlit.app/">
     <img class="demo" border="0" alt="demo_screenshot" src="readme/demo_screenshot.png"  height="400" width="400"/></a> -->
     <a href="https://nuolei-movie.streamlit.app/" target="_blank">
