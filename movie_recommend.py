@@ -10,6 +10,40 @@ from sklearn.preprocessing import normalize
 
 
 class MovieRecommender:
+    """Recommend movies by KNN and KNN+K-means models.
+
+    This recommender load a movie rating matrix and recommend movies to every user
+
+    Parameters
+    ----------
+    rec_num : int, default=5
+        Desired recommended movies.
+
+    n_neighbors : int, default=10
+        Number of users used to compute average rating in KNN.
+
+    Attributes
+    ----------
+    df_raw : pd.DataFrame (m_users,n_movies)
+        Loaded row movie rating frame.
+
+    df_filled : pd.DataFrame (m_users,n_movies)
+        Row movie rating dataframe with NaN filled by KNN model.
+
+    df_favorite : pd.DataFrame (m_users,rec_num)
+        Top `rec_num` movies rated by each user.
+
+    df_recommend_overall : pd.DataFrame (m_users,rec_num)
+       Top `rec_num` movies recommended to each user overall.
+
+    df_recommend_genres : List[pd.DataFrame (m_users, rec_num), ...]
+        Top `rec_num` movies recommended to each user in different genres.
+
+    genres_label : List[int]
+        Movie genre labels by K-means clustering.
+
+    """
+
     def __init__(self, rec_num=5, n_neighbors=10):
         self.rec_num = rec_num
         self.n_neighbors = n_neighbors
@@ -46,6 +80,18 @@ class MovieRecommender:
         return preds
 
     def load_data(self, file_path):
+        """Load movie rating matrix
+
+        Parameters
+        ----------
+        file_path : str
+            The file path of csv file storing movie rating matrix.
+
+        Returns
+        -------
+        None
+
+        """
         df_raw = pd.read_csv(file_path)
         df_raw.columns = df_raw.columns.str.replace(
             ":", "").str.replace("/", "")
@@ -54,10 +100,35 @@ class MovieRecommender:
         self.df_filled = self._knn_fill()
 
     def watched_movie_list(self, user_no):
+        """Get list of movies that have been watched by this user
+
+        Parameters
+        ----------
+        user_no : int
+            Target user No.
+
+        Returns
+        -------
+        Movie list this user have watched.
+
+        """
         return self.df_raw.iloc[user_no, :].dropna().index
 
     @st.cache
     def favorite_overall(self, user_no):
+        """Find top `rec_num` movie that the user has watched.
+
+        Parameters
+        ----------
+        user_no : int
+            Target user No.
+
+        Returns
+        -------
+        favorite_movies: List[] of length `rec_num`
+            Top `rec_num` movies this user have watched.
+
+        """
         if not self.df_favorite:
             df_favorite_movie = self.df_raw.fillna(-1)
             self.df_favorite = pd.DataFrame(df_favorite_movie.values.argsort(axis=1)[:, -self.rec_num:]).applymap(
@@ -67,6 +138,19 @@ class MovieRecommender:
 
     @st.cache
     def recommend_overall(self, user_no):
+        """Recommend top `rec_num` movie overall to this user.
+
+        Parameters
+        ----------
+        user_no : int
+            Target user No.
+
+        Returns
+        -------
+        recommended_movies: List[] of length `rec_num`
+            Top `rec_num` movies this we recommend to this user.
+
+        """
         if not self.df_recommend_overall:
             df_filled_masked = self._mask_raw_pos(self.df_filled)
             self.df_recommend_overall = pd.DataFrame(
@@ -77,6 +161,28 @@ class MovieRecommender:
         return recommended_movies
 
     def recommend_by_genres(self, user_no=None, movie_name=None, movie_no=None, k=3):
+        """Recommend top `rec_num` movie related to current `movie_no` or `movie_name` to this user.
+
+        Parameters
+        ----------
+        user_no : int
+            Target user No.
+
+        movie_name : str
+            Target movie_name.
+
+        movie_no : int
+            Target movie No. Overridden if given movie num
+
+        k : int, default = 3
+            k used in K-means model
+
+        Returns
+        -------
+        recommended_movies: List[] of length `rec_num`
+            Top `rec_num` movies this we recommend to this user.
+
+        """
         if movie_name:
             movie_no = self.df_raw.columns.to_list().index(movie_name)
 
@@ -86,7 +192,7 @@ class MovieRecommender:
             for label in range(k):
                 df_filled_masked = self._mask_raw_pos(self.df_filled)
                 df_within_cluster = df_filled_masked.loc[:,
-                                                         label == self.genres_label]
+                                    label == self.genres_label]
                 df_within_cluster = pd.DataFrame(df_within_cluster.values.argsort(axis=1)[:, -self.rec_num:]).applymap(
                     lambda idx: df_within_cluster.columns[idx])
                 self.df_recommend_genres.append(df_within_cluster)
@@ -201,7 +307,6 @@ st.write('''
     We further take mean average and take a look at the top 10 movies in each group.
 ''')
 
-
 st.write("### 🔍 Cluster visualiztion")
 # if st.checkbox('### Show Clustering '):
 st.write("#### Determine parameter K with Silhouette score")
@@ -220,7 +325,6 @@ with open('readme/kmeans_2d.png', 'rb') as f:
     image = Image.open(f)
     st.image(image)
 
-
 st.write('''
     Finally by observing the top 10 movies with the highest average rating, we can have a sense of what each cluster is made of.
     And they contains mainly:
@@ -238,12 +342,11 @@ if st.checkbox('Show top 10 movies in each cluster'):
 
     for idx in range(3):
         st.write('#### Top 10 movies in Group {}: ({})'.format(
-            idx+1, group_name[idx]))
+            idx + 1, group_name[idx]))
         series_top10 = movieRecommender.df_filled.loc[:, idx == movieRecommender.genres_label].T.mean(
             axis=1).nlargest(10)
         series_top10.name = 'ave_rating'
         st.table(series_top10)
-
 
 ####################### New part ######################
 
