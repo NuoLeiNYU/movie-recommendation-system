@@ -3,7 +3,7 @@
 Project highlights: **KNN**, **K-means**, **PCA**, **Data visualization**, **Recommender system**
     
 
-_Explore this project on our [online demo](http://nuolei-movie.streamlit.app) in one click_
+_Explore this project on my [online demo](http://nuolei-movie.streamlit.app) in one click_
 
 _Step by step analysis in [jupyter-notebook](https://github.com/NuoLeiNYU/movie-recommendation-system/blob/master/movie_recommender_analysis.ipynb)_
 
@@ -34,6 +34,7 @@ Based on KNN, we can recommend movies for each of them!
 
 ## 3. Recommendation based on KNN
 
+### Explore this recommendation on my [online demo](http://nuolei-movie.streamlit.app)
 
 <div id="images" align="center">
     <a href="https://nuolei-movie.streamlit.app/">
@@ -69,7 +70,7 @@ but also want to further group them up and give each groups **meaningful interpr
 In short by Silhouette score, our clustering result shows that there are **three** possible movie clusters. 
 We further take mean average and take a look at the top 10 movies in each group.
 
-
+### Explore this recommendation on my [online demo](http://nuolei-movie.streamlit.app)
 <center>
 <div id="images" align="center">
     <!-- <a href="https://nuolei-movie.streamlit.app/">
@@ -124,6 +125,8 @@ So it is a discretionary call and we may employ more SOTA models in that case.
 ```
 
 ## Thank you for exploring!
+
+Explore this project on my [online demo](http://nuolei-movie.streamlit.app)
 
 A full data analysis is in this [jupyter-notebook](https://github.com/NuoLeiNYU/movie-recommendation-system/blob/master/movie_recommender_analysis.ipynb).
 
